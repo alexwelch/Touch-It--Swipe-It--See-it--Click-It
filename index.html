@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Audi Presentation</title>
+    <script src="javascripts/prototype.js"></script>
+    <script src="javascripts/interface.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      document.observe("dom:loaded", function() {    
+
+        var $container = $("page_container_inner"),
+            touch_it = new TrackTouchMove($container),
+            page = new Page($container);
+
+        $('next_page_link').observe('click', function(e) {
+          page.next();
+        });
+        $('previous_page_link').observe('click', function(e) {
+          page.previous();
+        });
+
+      });
+    </script>
+    <link rel="stylesheet" href="stylesheets/interface.css" type="text/css" media="all" title="interface" />    
+  </head>
+  <body>
+    <div id="page_container">      
+      <div id='page_container_inner'>
+        
+        <div id="home" class="page">
+          <div class='top_bar'>
+            <a href="#home">back to home</a>
+          </div>
+          <div class='page_contents'>home page</div>    
+        </div>
+    
+        <div id="page_two" class="page">
+          <div class='top_bar'>
+            <a href="#home">back to home</a>
+          </div>
+          <div class='page_contents'>page 2</div>
+        </div>
+    
+        <div id="page_three" class="page">
+          <div class='top_bar'>
+            <a href="#home">back to home</a>
+          </div>
+          <div class='page_contents'>page 3</div>
+        </div>
+        
+      </div> <!-- /page_container_inner -->
+      <div id="footer">
+        <a href="#home" class='home_link'>back to Home</a>
+        <a href="#next_page" class='right' id='next_page_link'>Next Page</a>
+        <a href="#previous_page" class='right' id='previous_page_link'>Previous Page</a>
+      </div>
+    </div> <!-- /page_container -->
+  </body>
+</html>
