@@ -9,14 +9,13 @@
       document.observe("dom:loaded", function() {    
 
         var $container = $("page_container_inner"),
-            touch_it = new TrackTouchMove($container),
-            page = new Page($container);
+            touch_it = new TrackTouchMove($container);
 
         $('next_page_link').observe('click', function(e) {
-          page.next();
+          touch_it.page.next();
         });
         $('previous_page_link').observe('click', function(e) {
-          page.previous();
+          touch_it.page.previous();
         });
 
       });
@@ -47,6 +46,13 @@
           </div>
           <div class='page_contents'>page 3</div>
         </div>
+
+        <div id="page_four" class="page">
+          <div class='top_bar'>
+            <a href="#home">back to home</a>
+          </div>
+          <div class='page_contents'>page 4</div>
+        </div>        
         
       </div> <!-- /page_container_inner -->
       <div id="footer">
