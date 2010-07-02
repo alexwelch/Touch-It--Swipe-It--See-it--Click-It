@@ -14,17 +14,20 @@ body {
 
 /* --- site structure and layout --- */
 div#page_container {
-  width: 980px;
+  width: 768px;
   overflow: hidden;
   background-color: #ebebeb;
 }
 div#page_container_inner {
-  width: 9800px;
+  width: 7680px;
 }
 
 div.page {
-  width: 980px;
+  width: 768px;
   float: left;
+/*  overflow: scroll;
+  height: 800px;*/
+  height: 1024px;
 }
 .page div.top_bar {
   padding: 20px;
@@ -33,6 +36,9 @@ div.page {
 .page div.page_contents {
   padding: 50px;
 }
+.page_contents p {
+  width: 300px;
+}
   
 div#footer {
   padding: 10px;
@@ -40,4 +46,10 @@ div#footer {
 
 #footer a.right {
   margin-right: 10px;
+}
+
+iframe {
+  border: red 1px solid;
+  width: 300px;
+  height: 300px;
 }

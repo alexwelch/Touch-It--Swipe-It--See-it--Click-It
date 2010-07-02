@@ -49,7 +49,7 @@ var TrackTouchMove = Class.create( {
 	container_target_x : 0,	
 	cancelLimit : -1,
 	defaultCancelLimitLarge : 600,
-	container_width : 980,
+	container_width : 768,
 	defaultCancelLimit : 300,
 	rightLimit : -1,
 	element : false,
@@ -74,12 +74,26 @@ var TrackTouchMove = Class.create( {
       if (Math.abs(this.container_x - this.container_target_x) <= 0.5 ) {        
         this.container_x = this.container_target_x;
       }
-	    console.log('is_running');
-      this.container_x -= ( ( this.container_x - this.container_target_x ) / 5 );
+      this.container_x -= ( ( this.container_x - this.container_target_x ) / 6 );
       this.element.style.webkitTransform = "translate3d(" + this.container_x + "px, 0, 0)";      
-	  }
-	  
+	  }	  
 	  setTimeout( function(t) { t.runTimer(); } , this.frame_rate, this);
+	},
+	setTargetToPage : function() {
+	  this.container_target_x = this.page.number * -this.container_width;
+	},
+	slideToPage : function(number) {
+	  console.log('slidetopage');
+	  this.page.goto(number);
+	  this.setTargetToPage();
+	},
+	slideNext : function() {
+	  this.page.next();
+	  this.setTargetToPage();
+	},
+	slidePrevious : function() {
+	  this.page.previous();
+	  this.setTargetToPage();
 	},
 	onStart : function(a) {
 		if (a.touches.length === 1) {		
@@ -135,7 +149,7 @@ var TrackTouchMove = Class.create( {
 					} else {
 					  this.page.next();            
 					}
-					this.container_target_x = this.page.number * -this.container_width;            
+					this.setTargetToPage();            
 				} else {
 					this.container_target_x = this.startingPosition;
 				}

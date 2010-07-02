@@ -2,22 +2,29 @@
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
     <title>Audi Presentation</title>
     <script src="javascripts/prototype.js"></script>
     <script src="javascripts/interface.js"></script>
     <script type="text/javascript" charset="utf-8">
       document.observe("dom:loaded", function() {    
 
-        var $container = $("page_container_inner"),
-            touch_it = new TrackTouchMove($container);
+        var touch_it = new TrackTouchMove($("page_container_inner"));
 
         $('next_page_link').observe('click', function(e) {
-          touch_it.page.next();
+          touch_it.slideNext();
         });
         $('previous_page_link').observe('click', function(e) {
-          touch_it.page.previous();
+          touch_it.slidePrevious();
         });
-
+        
+        // get this working on ipad
+        // $$('a.home_link').each(function(el) {
+        //   el.observe('click', function(e) {
+        //     alert('go home');
+        //     touch_it.slideToPage(0);
+        //   });
+        // });
       });
     </script>
     <link rel="stylesheet" href="stylesheets/interface.css" type="text/css" media="all" title="interface" />    
@@ -28,32 +35,42 @@
         
         <div id="home" class="page">
           <div class='top_bar'>
-            <a href="#home">back to home</a>
+            <a href="#home" class='home_link'>back to home</a>
           </div>
           <div class='page_contents'>home page</div>    
         </div>
     
         <div id="page_two" class="page">
           <div class='top_bar'>
-            <a href="#home">back to home</a>
+            <a href="#home" class='home_link'>back to home</a>
           </div>
-          <div class='page_contents'>page 2</div>
+          <div class='page_contents'>
+            page 2
+            <img src="http://farewell.newmedio.net/images/ballroom2.jpg" />
+          </div>
         </div>
     
         <div id="page_three" class="page">
           <div class='top_bar'>
-            <a href="#home">back to home</a>
+            <a href="#home" class='home_link'>back to home</a>
           </div>
           <div class='page_contents'>page 3</div>
         </div>
 
         <div id="page_four" class="page">
           <div class='top_bar'>
-            <a href="#home">back to home</a>
+            <a href="#home" class='home_link'>back to home</a>
           </div>
-          <div class='page_contents'>page 4</div>
-        </div>        
+          <div class='page_contents'>
+            <h1>Page 4</h1>
+            <img src='http://farewell.newmedio.net/images/todd_gangsta.jpg' />
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>     
         
+        <div class='clear'></div>
       </div> <!-- /page_container_inner -->
       <div id="footer">
         <a href="#home" class='home_link'>back to Home</a>
