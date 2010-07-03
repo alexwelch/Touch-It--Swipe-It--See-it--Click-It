@@ -60,7 +60,7 @@ var TrackTouchMove = Class.create( {
 	initialize : function(a) {
 		this.cancelLimit = this.defaultCancelLimit;
 		this.element = a;
-    this.page = new Page(a);
+    	this.page = new Page(a);
 		this.element.style.webkitTransform = "translate3d(0, 0, 0)";
 		this.rightLimit = this.container_width * (this.page.total - 1);
 		this.element.observe("touchstart", this.onStart.bind(this));
