@@ -22,6 +22,9 @@ div#page_container {
 div#side_nav_bar {
   display: none;
 }
+div#side_nav_bar {
+  display: none;
+}
 div#page_container_inner {
   width: 7680px;	/* ( 10 * 768 ) */
   
