@@ -6,25 +6,29 @@
     <title>Audi Presentation</title>
     <script src="javascripts/prototype.js"></script>
     <script src="javascripts/interface.js"></script>
-    <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript">
       document.observe("dom:loaded", function() {    
  
         var touch_it = new TrackTouchMove($("page_container_inner"));
 
         $('next_page_link').observe('click', function(e) {
           touch_it.slideNext();
+          e.stop();
         });
         $('previous_page_link').observe('click', function(e) {
           touch_it.slidePrevious();
+          e.stop();
         });
         
-        // get this working on ipad
-        // $$('a.home_link').each(function(el) {
-        //   el.observe('click', function(e) {
-        //     alert('go home');
-        //     touch_it.slideToPage(0);
-        //   });
-        // });
+        $('page_container').observe('click', function(e) {
+          var target = e.target,
+              $target = $(target);
+          if ($target.hasClassName('home_link')) {
+            touch_it.slideToPage(0);
+            e.stop();            
+          }
+        });
+        
       });
     </script>
     <link rel="stylesheet" href="stylesheets/interface.css" type="text/css" media="all" title="interface" />    
@@ -34,7 +38,17 @@
       <div id='page_container_inner'>
         
         <div id="home" class="page">
-			<img src="images/testing/page01_bg.png" width="768" height="1024" alt="Page01 Bg"/>
+          <img src="images/testing/page01_bg.png" width="768" height="1024" alt="Page01 Bg"/>
+        </div>
+        
+        <div class="page" id="page_with_link">
+          <div class='top_bar'>
+            <a href="#home" class='home_link'>back to home</a>
+          </div>
+          <br />
+          <a href="http://google.com" title="Google">Google link</a>
+          <br />
+          <a href="index.html">Link to self</a>
         </div>
 
         <div id="page_one" class="page">
@@ -42,10 +56,10 @@
             <a href="#home" class='home_link'>back to home</a>
           </div>
           <div class='page_contents'>
-			home page
-			<img src="images/testing/r8-large.jpg" width="768" height="543" alt="R8 Large"/><br/><br/>
-			<img src="images/testing/r8-xlarge.jpg" width="768" height="543" alt="R8 Large"/><br/>
-		  </div>    
+            home page
+            <img src="images/testing/r8-large.jpg" width="768" height="543" alt="R8 Large"/><br/><br/>
+            <img src="images/testing/r8-xlarge.jpg" width="768" height="543" alt="R8 Large"/><br/>
+          </div>    
         </div>
     
         <div id="page_two" class="page">
@@ -78,35 +92,7 @@
           </div>
         </div>     
         
-        <div id="page_one" class="page">
-          <div class='top_bar'>
-            <a href="#home" class='home_link'>back to home</a>
-          </div>
-          <div class='page_contents'>
-			home page
-			<img src="images/testing/r8-large.jpg" width="768" height="543" alt="R8 Large"/><br/><br/>
-			<img src="images/testing/r8-xlarge.jpg" width="768" height="543" alt="R8 Large"/><br/>
-		  </div>    
-        </div>
-    
-        <div id="page_two" class="page">
-          <div class='top_bar'>
-            <a href="#home" class='home_link'>back to home</a>
-          </div>
-          <div class='page_contents'>
-            page 2
-            <img src="http://farewell.newmedio.net/images/ballroom2.jpg" />
-          </div>
-        </div>
-    
-        <div id="page_three" class="page">
-          <div class='top_bar'>
-            <a href="#home" class='home_link'>back to home</a>
-          </div>
-          <div class='page_contents'>page 3</div>
-        </div>
-
-        <div id="page_four" class="page">
+        <div id="page_five" class="page">
           <div class='top_bar'>
             <a href="#home" class='home_link'>back to home</a>
           </div>
@@ -119,11 +105,7 @@
           </div>
         </div>     
 
-        <div id="home" class="page">
-			<img src="images/testing/page02_bg.png" width="768" height="1024" />
-        </div>
-
-        <div id="page_four" class="page">
+        <div id="page_six" class="page">
           <div class='top_bar'>
             <a href="#home" class='home_link'>back to home</a>
           </div>
@@ -136,11 +118,7 @@
           </div>
         </div>     
 
-        <div id="home" class="page">
-			<img src="images/testing/page03_bg.png" width="768" height="1024" />
-        </div>
-
-        <div id="page_four" class="page">
+        <div id="page_seven" class="page">
           <div class='top_bar'>
             <a href="#home" class='home_link'>back to home</a>
           </div>
@@ -153,25 +131,8 @@
           </div>
         </div>     
 
-        <div id="home" class="page">
-			<img src="images/testing/page04_bg.png" width="768" height="1024" />
-        </div>
-
-        <div id="page_four" class="page">
-          <div class='top_bar'>
-            <a href="#home" class='home_link'>back to home</a>
-          </div>
-          <div class='page_contents'>
-            <h1>Page 4</h1>
-            <img src='http://farewell.newmedio.net/images/todd_gangsta.jpg' />
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </div>     
-
-        <div id="home" class="page">
-			<img src="images/testing/page01_bg.png" width="768" height="1024" />
+        <div id="page_eight" class="page">
+          <img src="images/testing/page01_bg.png" width="768" height="1024" />
         </div>
 
 

@@ -22,6 +22,9 @@ div#page_container {
 }
 div#page_container_inner {
   width: 13056px;	/* ( 17 * 768 ) */
+  /* for testing */
+  height: 800px;
+  overflow: hidden;  
 }
 
 div.page {
@@ -47,10 +50,4 @@ div#footer {
 
 #footer a.right {
   margin-right: 10px;
-}
-
-iframe {
-  border: red 1px solid;
-  width: 300px;
-  height: 300px;
 }

@@ -60,7 +60,7 @@ var TrackTouchMove = Class.create( {
 	initialize : function(a) {
 		this.cancelLimit = this.defaultCancelLimit;
 		this.element = a;
-    	this.page = new Page(a);
+    this.page = new Page(a);
 		this.element.style.webkitTransform = "translate3d(0, 0, 0)";
 		this.rightLimit = this.container_width * (this.page.total - 1);
 		this.element.observe("touchstart", this.onStart.bind(this));
@@ -81,9 +81,10 @@ var TrackTouchMove = Class.create( {
 	},
 	setTargetToPage : function() {
 	  this.container_target_x = this.page.number * -this.container_width;
+	  console.log(this.container_target_x);
+	  console.log(this.is_touching);
 	},
 	slideToPage : function(number) {
-	  console.log('slidetopage');
 	  this.page.goto(number);
 	  this.setTargetToPage();
 	},
@@ -135,8 +136,8 @@ var TrackTouchMove = Class.create( {
 		}
 	},
 	onEnd : function(a) {
-		if (this.touchstart.x !== false && this.touchend.x !== false) {
-		  this.is_touching = false;
+	  this.is_touching = false;
+		if (this.touchstart.x !== false && this.touchend.x !== false) {		  
 			this.touchdiffx = this.touchend.x - this.touchstart.x;
 			this.element.removeClassName("dragging");
 			if (Math.abs(this.touchdiffx) <= this.cancelLimit) {
