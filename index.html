@@ -27,14 +27,15 @@
             touch_it.slideToPage(0);
             e.stop();            
           }
-        });
-        
+        });        
       });
     </script>
     <link rel="stylesheet" href="stylesheets/interface.css" type="text/css" media="all" title="interface" />    
+    <link rel="stylesheet" href="stylesheets/landscape.css" media="all and (orientation:landscape)" />
+    
   </head>
   <body>
-    <div id="page_container">      
+    <div id="page_container">     
       <div id='page_container_inner'>
         
         <div id="home" class="page">
@@ -145,5 +146,14 @@
         <a href="#previous_page" class='right' id='previous_page_link'>Previous Page</a>
       </div>
     </div> <!-- /page_container -->
+    <div id="side_nav_bar">
+      <h1>This is where you navigate to stuff</h1>
+      <ul>
+        <li>Page 1</li>
+        <li>Page 2</li>
+        <li>Page 3</li>
+        <li>Page 4</li>
+      </ul>
+    </div>
   </body>
 </html>

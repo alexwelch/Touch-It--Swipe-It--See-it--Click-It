@@ -48,7 +48,7 @@ var TrackTouchMove = Class.create( {
 	container_x : 0,
 	container_target_x : 0,	
 	cancelLimit : -1,
-	defaultCancelLimitLarge : 600,
+	defaultCancelLimitLarge : 450,
 	container_width : 768,
 	defaultCancelLimit : 300,
 	rightLimit : -1,
@@ -56,7 +56,7 @@ var TrackTouchMove = Class.create( {
 	page : false,
 	is_touching : false,
 	animation_timer : false,
-	frame_rate : 1000/30,
+	frame_rate : 1000/60,
 	initialize : function(a) {
 		this.cancelLimit = this.defaultCancelLimit;
 		this.element = a;
@@ -74,15 +74,13 @@ var TrackTouchMove = Class.create( {
       if (Math.abs(this.container_x - this.container_target_x) <= 0.5 ) {        
         this.container_x = this.container_target_x;
       }
-      this.container_x -= ( ( this.container_x - this.container_target_x ) / 6 );
+      this.container_x -= ( ( this.container_x - this.container_target_x ) / 10 );
       this.element.style.webkitTransform = "translate3d(" + this.container_x + "px, 0, 0)";      
 	  }	  
 	  setTimeout( function(t) { t.runTimer(); } , this.frame_rate, this);
 	},
 	setTargetToPage : function() {
 	  this.container_target_x = this.page.number * -this.container_width;
-	  console.log(this.container_target_x);
-	  console.log(this.is_touching);
 	},
 	slideToPage : function(number) {
 	  this.page.goto(number);
