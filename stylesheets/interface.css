@@ -3,7 +3,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 /* --- default elements --- */
 body {
-  width: 768px;
   background-color:#000000;
   /* set fonts etc. */
 }
@@ -16,12 +15,17 @@ body {
 
 /* --- site structure and layout --- */
 div#page_container {
+  float: left;
   width: 768px;
   overflow: hidden;
   background-color: #ebebeb;
 }
+div#side_nav_bar {
+  display: none;
+}
 div#page_container_inner {
-  width: 13056px;	/* ( 17 * 768 ) */
+  width: 7680px;	/* ( 10 * 768 ) */
+  
   /* for testing */
   height: 800px;
   overflow: hidden;  

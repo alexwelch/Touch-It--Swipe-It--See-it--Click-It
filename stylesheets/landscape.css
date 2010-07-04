@@ -1,0 +1,6 @@
+div#side_nav_bar {
+  display: block;
+  float: left;
+  width: 256px;
+  background: #fff;
+}
